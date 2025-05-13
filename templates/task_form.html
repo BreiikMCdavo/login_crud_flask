@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block title %}{{ action }} Tarea{% endblock %}{% block content %}
+<h2>{{ action }} Tarea</h2>
+<form method="POST" class="card p-4">
+    <input class="form-control mb-2" type="text" name="titulo" placeholder="Título" value="{{ task.titulo if task else '' }}" required>
+    <textarea class="form-control mb-2" name="descripcion" placeholder="Descripción">{{ task.descripcion if task else '' }}</textarea>
+    <button class="btn btn-primary">{{ action }}</button>
+</form>
+{% endblock %}

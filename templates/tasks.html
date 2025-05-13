@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% block title %}Mis Tareas{% endblock %}{% block content %}
+<h2 class="mb-4">Mis Tareas</h2>
+<a class="btn btn-success mb-3" href="{{ url_for('new_task') }}">Nueva Tarea</a>
+<table class="table table-bordered bg-white">
+    <thead><tr><th>Título</th><th>Descripción</th><th>Acciones</th></tr></thead>
+    <tbody>
+    {% for task in tasks %}
+        <tr>
+            <td>{{ task.titulo }}</td>
+            <td>{{ task.descripcion }}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="{{ url_for('edit_task', id=task.id) }}">Editar</a>
+                <a class="btn btn-sm btn-danger" href="{{ url_for('delete_task', id=task.id) }}">Eliminar</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr><td colspan="3">No hay tareas aún.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
